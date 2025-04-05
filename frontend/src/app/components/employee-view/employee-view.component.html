@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mt-5 shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Employee Details</h4>
+        </div>
+        <div class="card-body">
+          <div *ngIf="employee; else loading">
+            <div class="text-center mb-3">
+              <img [src]="employee.profilePicture" alt="Profile" class="img-thumbnail" style="width: 150px;">
+            </div>
+            <p><strong>First Name:</strong> {{ employee.firstName }}</p>
+            <p><strong>Last Name:</strong> {{ employee.lastName }}</p>
+            <p><strong>Email:</strong> {{ employee.email }}</p>
+            <p><strong>Department:</strong> {{ employee.department }}</p>
+            <p><strong>Position:</strong> {{ employee.position }}</p>
+            <div class="text-center">
+              <button class="btn btn-warning me-2" [routerLink]="['/employee/update', employee.id]">Edit</button>
+              <button class="btn btn-secondary" routerLink="/employees">Back to List</button>
+            </div>
+          </div>
+          <ng-template #loading>
+            <p>Loading employee details...</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

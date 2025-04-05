@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card mt-5 shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Update Employee</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="form-label">First Name</label>
+              <input type="text" formControlName="firstName" class="form-control" placeholder="First Name" autofocus>
+              <div *ngIf="updateForm.controls['firstName'].invalid && updateForm.controls['firstName'].touched" class="text-danger small">
+                First name is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
+              <div *ngIf="updateForm.controls['lastName'].invalid && updateForm.controls['lastName'].touched" class="text-danger small">
+                Last name is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" formControlName="email" class="form-control" placeholder="Email">
+              <div *ngIf="updateForm.controls['email'].invalid && updateForm.controls['email'].touched" class="text-danger small">
+                Valid email is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Department</label>
+              <input type="text" formControlName="department" class="form-control" placeholder="Department">
+              <div *ngIf="updateForm.controls['department'].invalid && updateForm.controls['department'].touched" class="text-danger small">
+                Department is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Position</label>
+              <input type="text" formControlName="position" class="form-control" placeholder="Position">
+              <div *ngIf="updateForm.controls['position'].invalid && updateForm.controls['position'].touched" class="text-danger small">
+                Position is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Profile Picture</label>
+              <input type="file" (change)="onFileChange($event)" class="form-control">
+              <div *ngIf="updateForm.controls['profilePicture'].invalid && updateForm.controls['profilePicture'].touched" class="text-danger small">
+                Profile picture is required.
+              </div>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+              {{ errorMessage }}
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+              Update Employee
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="card mt-5 shadow">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Employee List</h4>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search by name, email, department, or position"
+            [(ngModel)]="filterText"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-12 text-end">
+          <button class="btn btn-success" routerLink="/employee/add">
+            Add Employee
+          </button>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th>Profile Picture</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Department</th>
+              <th>Position</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of employees | filter: filterText">
+              <td>
+                <img [src]="emp.profilePicture" alt="Profile" class="img-thumbnail" style="width: 50px;">
+              </td>
+              <td>{{ emp.firstName }} {{ emp.lastName }}</td>
+              <td>{{ emp.email }}</td>
+              <td>{{ emp.department }}</td>
+              <td>{{ emp.position }}</td>
+              <td>
+                <button class="btn btn-info btn-sm me-1" [routerLink]="['/employee/view', emp.id]">View</button>
+                <button class="btn btn-warning btn-sm me-1" [routerLink]="['/employee/update', emp.id]">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteEmployee(emp.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>

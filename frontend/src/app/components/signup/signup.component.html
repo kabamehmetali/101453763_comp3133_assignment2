@@ -1,0 +1,37 @@
+<!-- Path: src/app/components/signup/signup.component.html -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mt-5 shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Signup</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input type="text" formControlName="username" class="form-control" autofocus>
+              <div *ngIf="signupForm.controls['username'].invalid && signupForm.controls['username'].touched" class="text-danger small">
+                Username is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" formControlName="password" class="form-control">
+              <div *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched" class="text-danger small">
+                Password is required.
+              </div>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+              {{ errorMessage }}
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Signup</button>
+          </form>
+        </div>
+        <div class="card-footer text-center">
+          Already have an account? <a routerLink="/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
